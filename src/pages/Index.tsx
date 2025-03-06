@@ -37,14 +37,6 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="mb-6 text-center max-w-3xl mx-auto bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-              <h3 className="font-pixel text-lg text-yellow-800 mb-2">Pixel Pricing</h3>
-              <p className="font-retro text-base text-yellow-700">
-                Each pixel costs <span className="font-bold">$0.10</span>. Minimum purchase is 10×10 ($10).
-                Larger blocks get more attention! Hover over ads to see their price.
-              </p>
-            </div>
-            
             <div className="mb-6 flex flex-col md:flex-row justify-center gap-4 font-retro text-lg">
               <a 
                 href="#" 
@@ -73,7 +65,7 @@ const Index = () => {
             
             <div className="mt-6 text-center">
               <p className="font-retro text-base text-gray-700">
-                Hover over advertisements to see them pop and reveal their price! Each colored block represents a purchased ad space.
+                Hover over advertisements to see them pop! Each colored block represents a purchased ad space.
               </p>
             </div>
           </div>
