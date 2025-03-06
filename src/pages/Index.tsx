@@ -37,29 +37,12 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="mb-6 text-center">
-              <h3 className="font-pixel text-lg text-gray-800 mb-2">Buy Your Pixel Space Today!</h3>
-              <p className="font-retro text-gray-600 max-w-3xl mx-auto mb-2">
-                Each ad space costs $1 per grid cell (10x10 pixels). Minimum ad size is 25x15 grid cells.
-              </p>
-              <div className="flex justify-center gap-2 text-sm font-retro">
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-green-400 mr-1"></div>
-                  <span>Available</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-red-400 mr-1"></div>
-                  <span>Sold</span>
-                </div>
-              </div>
-            </div>
-            
             <div className="mb-6 flex flex-col md:flex-row justify-center gap-4 font-retro text-lg">
               <a 
                 href="#" 
                 className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white px-6 py-3 rounded-md shadow-md transition-all duration-300 text-center transform hover:-translate-y-1"
               >
-                How It Works
+                Buy Pixels (Sold Out!)
               </a>
               <a 
                 href="#" 
@@ -75,17 +58,14 @@ const Index = () => {
               </a>
             </div>
             
-            {/* The main pixel grid with proper container for scrolling */}
-            <div className="border-4 border-gray-800 shadow-xl overflow-auto">
+            {/* The main pixel grid */}
+            <div className="border-4 border-gray-800 shadow-xl">
               <PixelGrid />
             </div>
             
             <div className="mt-6 text-center">
               <p className="font-retro text-base text-gray-700">
-                Click on any available ad space to purchase it. Hover over ads to see prices and details.
-              </p>
-              <p className="font-retro text-sm text-gray-500 mt-2">
-                Your ad will stay online forever! Minimum size is 25x15 grid cells (250x150 actual pixels).
+                Hover over advertisements to see them pop! Each colored block represents a purchased ad space.
               </p>
             </div>
           </div>
