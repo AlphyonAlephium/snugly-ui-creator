@@ -40,7 +40,7 @@ const Index = () => {
             <div className="mb-6 text-center">
               <h3 className="font-pixel text-lg text-gray-800 mb-2">Buy Your Pixel Space Today!</h3>
               <p className="font-retro text-gray-600 max-w-3xl mx-auto mb-2">
-                Each pixel costs $1. Click on any available space to make it yours forever!
+                Each pixel costs $1. Our canvas is 100x100 pixels (10,000 pixels total).
               </p>
               <div className="flex justify-center gap-2 text-sm font-retro">
                 <div className="flex items-center">
@@ -75,8 +75,8 @@ const Index = () => {
               </a>
             </div>
             
-            {/* The main pixel grid */}
-            <div className="border-4 border-gray-800 shadow-xl">
+            {/* The main pixel grid with proper container for scrolling */}
+            <div className="border-4 border-gray-800 shadow-xl overflow-auto">
               <PixelGrid />
             </div>
             
@@ -85,7 +85,7 @@ const Index = () => {
                 Click on any available ad space to purchase it. Hover over ads to see prices and details.
               </p>
               <p className="font-retro text-sm text-gray-500 mt-2">
-                Your ad will stay online forever!
+                Your ad will stay online forever! Each pixel is exactly 10x10 pixels in size.
               </p>
             </div>
           </div>

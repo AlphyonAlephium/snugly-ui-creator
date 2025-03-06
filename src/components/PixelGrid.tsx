@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -62,7 +61,7 @@ const generateRandomAd = (size: number, row: number, col: number): AdData => {
 };
 
 // Generate a grid of ads
-const generateAds = (rows: number, cols: number, minSize = 1, maxSize = 6) => {
+const generateAds = (rows: number, cols: number, minSize = 1, maxSize = 4) => {
   const grid: AdData[][] = Array(rows).fill(null).map(() => Array(cols).fill(null));
   const filledCells: Record<string, boolean> = {};
   
@@ -122,10 +121,13 @@ const PixelGrid: React.FC<PixelGridProps> = ({ className }) => {
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
   const { toast } = useToast();
   
-  // Responsive grid size based on screen width
-  const useSmallGrid = window.innerWidth < 768;
-  const gridRows = useSmallGrid ? 30 : 40;
-  const gridCols = useSmallGrid ? 30 : 50;
+  // Define pixel size - this makes each grid cell exactly 10x10 pixels
+  const PIXEL_SIZE = 10; // Each cell is 10x10 pixels
+  
+  // Determine grid dimensions - fixed for actual pixel size
+  // 100x100 grid = 1000x1000 pixels total
+  const gridRows = 100;
+  const gridCols = 100;
   
   useEffect(() => {
     // Generate ads with a loading delay for animation effect
@@ -137,7 +139,7 @@ const PixelGrid: React.FC<PixelGridProps> = ({ className }) => {
     }, 500);
     
     return () => clearTimeout(timer);
-  }, [gridRows, gridCols]);
+  }, []);
 
   const handleAdClick = (ad: AdData) => {
     if (ad.purchased) {
@@ -188,22 +190,28 @@ const PixelGrid: React.FC<PixelGridProps> = ({ className }) => {
   };
   
   return (
-    <div className={cn("w-full overflow-hidden bg-gray-200 p-1", className)}>
+    <div className={cn("w-full overflow-auto bg-gray-200 p-1", className)}>
       {isLoading ? (
         <div className="flex justify-center items-center h-[500px]">
           <div className="font-pixel text-xl text-gray-700 animate-pulse">Loading pixel grid...</div>
         </div>
       ) : (
-        <div className="grid" style={{ 
-          gridTemplateRows: `repeat(${gridRows}, minmax(5px, 1fr))`,
-          gridTemplateColumns: `repeat(${gridCols}, minmax(5px, 1fr))`,
-          gap: '1px'
-        }}>
+        <div 
+          className="grid bg-white"
+          style={{ 
+            gridTemplateRows: `repeat(${gridRows}, ${PIXEL_SIZE}px)`,
+            gridTemplateColumns: `repeat(${gridCols}, ${PIXEL_SIZE}px)`,
+            gap: '1px',
+            width: `${gridCols * PIXEL_SIZE + gridCols}px`,
+            height: `${gridRows * PIXEL_SIZE + gridRows}px`,
+            maxWidth: '100%'
+          }}
+        >
           {ads.map((row, rowIndex) => 
             row.map((ad, colIndex) => {
               if (!ad) return null; // Skip cells that are part of larger ads
               
-              const price = ad.width * ad.height;
+              const price = ad.width * ad.height; // $1 per pixel
               
               return (
                 <div
@@ -218,6 +226,8 @@ const PixelGrid: React.FC<PixelGridProps> = ({ className }) => {
                     gridRow: `span ${ad.height}`,
                     gridColumn: `span ${ad.width}`,
                     animation: `pixel-fade 0.3s ease-in-out ${(rowIndex + colIndex) * 0.01}s`,
+                    width: `${ad.width * PIXEL_SIZE}px`,
+                    height: `${ad.height * PIXEL_SIZE}px`
                   }}
                   onClick={() => handleAdClick(ad)}
                 >
