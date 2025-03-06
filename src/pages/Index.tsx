@@ -37,12 +37,29 @@ const Index = () => {
               </p>
             </div>
             
+            <div className="mb-6 text-center">
+              <h3 className="font-pixel text-lg text-gray-800 mb-2">Buy Your Pixel Space Today!</h3>
+              <p className="font-retro text-gray-600 max-w-3xl mx-auto mb-2">
+                Each pixel costs $1. Click on any available space to make it yours forever!
+              </p>
+              <div className="flex justify-center gap-2 text-sm font-retro">
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-green-400 mr-1"></div>
+                  <span>Available</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-red-400 mr-1"></div>
+                  <span>Sold</span>
+                </div>
+              </div>
+            </div>
+            
             <div className="mb-6 flex flex-col md:flex-row justify-center gap-4 font-retro text-lg">
               <a 
                 href="#" 
                 className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white px-6 py-3 rounded-md shadow-md transition-all duration-300 text-center transform hover:-translate-y-1"
               >
-                Buy Pixels (Sold Out!)
+                How It Works
               </a>
               <a 
                 href="#" 
@@ -65,7 +82,10 @@ const Index = () => {
             
             <div className="mt-6 text-center">
               <p className="font-retro text-base text-gray-700">
-                Hover over advertisements to see them pop! Each colored block represents a purchased ad space.
+                Click on any available ad space to purchase it. Hover over ads to see prices and details.
+              </p>
+              <p className="font-retro text-sm text-gray-500 mt-2">
+                Your ad will stay online forever!
               </p>
             </div>
           </div>
